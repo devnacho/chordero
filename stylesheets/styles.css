@@ -12,19 +12,10 @@ svg{
     width:1200px;
     margin: 0 auto;
 }
-.note{
-    cursor:pointer;
-    fill:rgba(0,0,0,0);
-}
-.note:hover{
-    fill:rgba(0,0,0,0.3);
-}
 
 #wood{
   fill: #795d4e;
 }
-
-
 
 .fret{
   stroke:#5e4747;
@@ -43,4 +34,12 @@ svg{
 
 .marker{
   fill:#FFF;
+}
+
+.note{
+    cursor:pointer;
+    fill:rgba(0,0,0,0);
+}
+.note:hover{
+    fill:rgba(0,0,0,0.3);
 }
