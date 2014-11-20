@@ -9,6 +9,7 @@
     this.strings = calculateStrings(this.fretboardHeight);
     this.frets = calculateFrets(this.scaleLength);
     this.simpleMarkers = calculateSimpleMarkers(this.fretboardHeight, this.frets);
+    this.doubleMarkers = calculateDoubleMarkers(this.fretboardHeight, this.frets);
 
     function calculateStrings(fretboardHeight){
       var distanceToBorder = 10;
@@ -40,8 +41,25 @@
       var markers = [];
       for(var i = 1; i < frets.length ; i+=1) {
         if( i % 2 && i != 1 && i != 11 && i != 13 & i != 23 ){
-          markers.push({ xPosition: frets[i].xPosition - (frets[i].xPosition - frets[i - 1].xPosition) / 2, yPosition: fretboardHeight / 2, radius: 5});
+          markers.push({ xPosition: frets[i].xPosition - (frets[i].xPosition - frets[i - 1].xPosition) / 2,
+                         yPosition: fretboardHeight / 2,
+                         radius: 5});
         }
+      }
+      return markers;
+    }
+
+    function calculateDoubleMarkers(fretboardHeight, frets){
+      var markers = [];
+
+      for(var i = 1; i < frets.length ; i+=1) {
+        if( i == 12 ){
+          markers.push({ xPosition: frets[i].xPosition - (frets[i].xPosition - frets[i - 1].xPosition) / 2,
+                         yPosition1: (fretboardHeight/ 2) - 35,
+                         yPosition2: (fretboardHeight/ 2) + 35,
+                         radius: 5});
+        }
+
       }
       return markers;
     }

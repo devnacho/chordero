@@ -1,4 +1,4 @@
-<html ng-app="fretboard">
+<html ng-app="fretboard" ng-cloak>
     <head>
         <title>Fretboard Chords</title>
         <link href="stylesheets/styles.css" rel="stylesheet" type="text/css"></link>
@@ -19,6 +19,12 @@
 
                 <!-- Simple Markers -->
                 <circle class="marker" ng-repeat="marker in fretboard.simpleMarkers" cx="{{marker.xPosition}}" cy="{{marker.yPosition}}" r="{{marker.radius}}"></circle>
+
+                <!-- Double Markers -->
+                <g ng-repeat="marker in fretboard.doubleMarkers">
+                    <circle class="marker" cx="{{marker.xPosition}}" cy="{{marker.yPosition1}}" r="{{marker.radius}}"></circle>
+                    <circle class="marker" cx="{{marker.xPosition}}" cy="{{marker.yPosition2}}" r="{{marker.radius}}"></circle>
+                </g>
 
                 <!-- Strings -->
                 <path class="string"  ng-repeat="string in fretboard.strings" d="M 0, {{string.yPosition}} L {{fretboard.woodLength}} , {{string.yPosition}} "></path>
