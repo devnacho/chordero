@@ -28,3 +28,8 @@ svg{
   stroke: #000;
   stroke-width:8;
 }
+
+.string{
+  stroke: #ccc;
+  stroke-width:1;
+}

@@ -17,9 +17,11 @@
                 <!-- Nut -->
                 <path id="nut" d="M0,0L0,{{fret.fretboardHeight}}"></path>
 
+                <!-- Frets -->
 
 
-
+                <!-- Strings -->
+                <path class="string"  ng-repeat="string in fret.strings" d="M 0, {{string.yPosition}} L {{fret.woodLength}} , {{string.yPosition}} "></path>
 
             </svg>
         </div>
