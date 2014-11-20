@@ -9,7 +9,7 @@
         <img src="images/logo.png" id="logo" width="815" height="134">
 
         <div id="canvas_container" ng-controller="FretboardCtrl as fretboard">
-            <svg height="400" version="1.1" width="1200" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+            <svg height="400" version="1.1" width="1200" xmlns="http://www.w3.org/2000/svg">
 
                 <!-- Wood -->
                 <rect id="wood" x="0" y="0" width="{{fretboard.woodLength}}" height="{{fretboard.fretboardHeight}}" r="0" rx="0" ry="0" ></rect>
@@ -28,6 +28,8 @@
 
                 <!-- Strings -->
                 <path class="string"  ng-repeat="string in fretboard.strings" d="M 0, {{string.yPosition}} L {{fretboard.woodLength}} , {{string.yPosition}} "></path>
+
+                <!-- Notes -->
 
             </svg>
         </div>

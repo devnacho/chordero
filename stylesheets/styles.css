@@ -3,7 +3,7 @@ body{
     text-align: center;
 }
 svg{
-    overflow: visible !important;
+    overflow: visible;
 }
 #logo{
     margin: 100px auto;
