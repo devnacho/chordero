@@ -24,7 +24,14 @@ svg{
   fill: #795d4e;
 }
 
-#nut{
+
+
+.fret{
+  stroke:#5e4747;
+  stroke-width:2;
+}
+
+.nut.fret{
   stroke: #000;
   stroke-width:8;
 }
