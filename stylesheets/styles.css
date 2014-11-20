@@ -1,0 +1,25 @@
+body{
+    background: rgb(72, 224, 237);
+    text-align: center;
+}
+svg{
+    overflow: visible !important;
+}
+#logo{
+    margin: 100px auto;
+}
+#canvas_container {
+    width:1200px;
+    margin: 0 auto;
+}
+.note{
+    cursor:pointer;
+    fill:rgba(0,0,0,0);
+}
+.note:hover{
+    fill:rgba(0,0,0,0.3);
+}
+
+#wood{
+  fill: #795d4e;
+}

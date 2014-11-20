@@ -1,0 +1,22 @@
+<html ng-app="fretboard">
+    <head>
+        <title>Fretboard Chords</title>
+        <link href="stylesheets/styles.css" rel="stylesheet" type="text/css"></link>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/app/fretboard.js"></script>
+    </head>
+    <body>
+        <img src="images/logo.png" id="logo" width="815" height="134">
+
+        <div id="canvas_container" ng-controller="FretboardCtrl as fret">
+            <svg height="400" version="1.1" width="1200" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+
+                <!-- Wood -->
+                <rect id="wood" x="0" y="0" width="{{fret.woodLength}}" height="{{fret.fretboardHeight}}" r="0" rx="0" ry="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+
+            </svg>
+        </div>
+
+    </body>
+</html>
+
