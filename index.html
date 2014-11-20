@@ -17,6 +17,9 @@
                 <!-- Frets -->
                 <path ng-class="{nut: $first}" class="fret"  ng-repeat="fret in fretboard.frets"  d="M {{fret.xPosition}} , 0 L {{fret.xPosition}} , {{fretboard.fretboardHeight}} "></path>
 
+                <!-- Simple Markers -->
+                <circle class="marker" ng-repeat="marker in fretboard.simpleMarkers" cx="{{marker.xPosition}}" cy="{{marker.yPosition}}" r="{{marker.radius}}"></circle>
+
                 <!-- Strings -->
                 <path class="string"  ng-repeat="string in fretboard.strings" d="M 0, {{string.yPosition}} L {{fretboard.woodLength}} , {{string.yPosition}} "></path>
 

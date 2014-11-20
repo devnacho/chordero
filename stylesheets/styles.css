@@ -40,3 +40,7 @@ svg{
   stroke: #ccc;
   stroke-width:1;
 }
+
+.marker{
+  fill:#FFF;
+}
