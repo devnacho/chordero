@@ -31,7 +31,7 @@
 
                 <!-- Notes -->
                 <g>
-                    <circle ng-repeat="note in fretboard.notes"  class="note" cx="{{note.xPosition}}" cy="{{note.yPosition}}" r="13"></circle>
+                    <circle ng-click="fretboard.alertNote(note.string, note.fret)" ng-repeat="note in fretboard.notes"  class="note" cx="{{note.xPosition}}" cy="{{note.yPosition}}" r="13"></circle>
                 </g>
             </svg>
         </div>

@@ -13,6 +13,10 @@
 
     this.notes = calculateNotes(this.strings, this.frets);
 
+    this.alertNote = function(string, fret){
+      console.log("String: " + (string + 1) + " Fret: "+ fret );
+    }
+
     function calculateStrings(fretboardHeight){
       var distanceToBorder = 10;
       var allStringsHeight = fretboardHeight - (distanceToBorder * 2);
@@ -67,7 +71,7 @@
     }
 
     function calculateNotes(strings, frets){
-      var distanceToFret = 15;
+      var distanceToFret = 10;
       var notes = [];
       for(var i = 0; i < strings.length ; i+=1) {
         for(var j = 0; j < frets.length ; j+=1) {
