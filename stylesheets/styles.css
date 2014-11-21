@@ -1,9 +1,12 @@
 body{
   background: rgb(72, 224, 237);
   text-align: center;
+  margin:0;
+  font-family: 'Helvetica', 'Arial', sans-serif;
 }
 svg{
   overflow: visible;
+  margin-bottom: 50px;
 }
 #logo{
   margin: 100px auto;
@@ -48,4 +51,11 @@ svg{
   fill: #FFF;
   stroke: #1F1F1F;
   stroke-width: 3px;
+}
+
+.recent-chords{
+  background: white;
+  padding:40px 0;
+  margin:0;
+  border-top:4px solid #1B696F;
 }

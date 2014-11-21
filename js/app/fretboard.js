@@ -94,7 +94,27 @@
 
 
 
+  function chord(){
+    return {
+        restrict: 'AE',
+        replace: true,
+        scope: {
+          name: '@',
+          positions: '@',
+          fingers: '@',
+          size: '@'
+        },
+        link : function (scope, elem, attrs) {
+          var chord = chords.chord(scope.name, scope.positions,scope.fingers , scope.size);
+          var canvas = $('<canvas></canvas>').attr({width:chord.getWidth(), height:chord.getHeight()}).insertAfter(elem);
+          var ctx = canvas[0].getContext('2d');
+          chord.Draw(ctx);
+        }
+    }
+  }
+
   app.controller('FretboardCtrl', [FretboardCtrl] );
+  app.directive('chord', [chord] );
 
 
 })();

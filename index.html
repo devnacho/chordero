@@ -2,14 +2,16 @@
     <head>
         <title>Fretboard Chords</title>
         <link href="stylesheets/styles.css" rel="stylesheet" type="text/css"></link>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
         <script type="text/javascript" src="js/angular.min.js"></script>
+        <script src="js/chords.js"></script>
         <script type="text/javascript" src="js/app/fretboard.js"></script>
     </head>
     <body>
         <img src="images/logo.png" id="logo" width="815" height="134">
 
         <div id="canvas_container" ng-controller="FretboardCtrl as fretboard">
-            <svg height="400" version="1.1" width="1200" xmlns="http://www.w3.org/2000/svg">
+            <svg height="200" version="1.1" width="1200" xmlns="http://www.w3.org/2000/svg">
 
                 <!-- Wood -->
                 <rect id="wood" x="0" y="0" width="{{fretboard.woodLength}}" height="{{fretboard.fretboardHeight}}" r="0" rx="0" ry="0" ></rect>
@@ -34,6 +36,13 @@
                     <circle ng-click="fretboard.toggleNote($index)" ng-class="{selected : note.selected}" ng-repeat="note in fretboard.notes"  class="note" cx="{{note.xPosition}}" cy="{{note.yPosition}}" r="13"></circle>
                 </g>
             </svg>
+        </div>
+
+        <div class="recent-chords">
+            <h1>Recent chords</h1>
+            <chord name="A_sus" positions="X02230" fingers="--113-" size="4" ></chord>
+            <chord name="C" positions="X32010" fingers="-32-1-" size="4" ></chord>
+            <chord name="A" positions="577655" fingers="134211" size="4" ></chord>
         </div>
 
     </body>
