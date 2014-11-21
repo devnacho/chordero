@@ -1,16 +1,16 @@
 body{
-    background: rgb(72, 224, 237);
-    text-align: center;
+  background: rgb(72, 224, 237);
+  text-align: center;
 }
 svg{
-    overflow: visible;
+  overflow: visible;
 }
 #logo{
-    margin: 100px auto;
+  margin: 100px auto;
 }
 #canvas_container {
-    width:1200px;
-    margin: 0 auto;
+  width:1200px;
+  margin: 0 auto;
 }
 
 #wood{
@@ -37,9 +37,15 @@ svg{
 }
 
 .note{
-    cursor:pointer;
-    fill:rgba(0,0,0,0);
+  cursor:pointer;
+  fill:rgba(0,0,0,0);
 }
 .note:hover{
-    fill:rgba(0,0,0,0.3);
+  fill:rgba(0,0,0,0.3);
+}
+
+.note.selected{
+  fill: #FFF;
+  stroke: #1F1F1F;
+  stroke-width: 3px;
 }

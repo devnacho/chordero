@@ -13,8 +13,10 @@
 
     this.notes = calculateNotes(this.strings, this.frets);
 
-    this.alertNote = function(string, fret){
-      console.log("String: " + (string + 1) + " Fret: "+ fret );
+    this.toggleNote = function(index){
+      note = this.notes[index];
+      note.selected = ! note.selected;
+      console.log("string: " + (note.string + 1) + " fret: " + note.fret);
     }
 
     function calculateStrings(fretboardHeight){
@@ -71,7 +73,7 @@
     }
 
     function calculateNotes(strings, frets){
-      var distanceToFret = 10;
+      var distanceToFret = 20;
       var notes = [];
       for(var i = 0; i < strings.length ; i+=1) {
         for(var j = 0; j < frets.length ; j+=1) {
@@ -79,7 +81,8 @@
                           xPosition: frets[j].xPosition - distanceToFret,
                           yPosition: strings[i].yPosition,
                           fret: j,
-                          string: i
+                          string: i,
+                          selected: false
                         });
         }
       }
