@@ -7,10 +7,9 @@
         <script src="js/chords.js"></script>
         <script type="text/javascript" src="js/app/fretboard.js"></script>
     </head>
-    <body>
+    <body ng-controller="FretboardCtrl as fretboard">
         <img src="images/logo.png" id="logo" width="815" height="134">
-
-        <div id="canvas_container" ng-controller="FretboardCtrl as fretboard">
+        <div id="canvas_container">
             <svg height="200" version="1.1" width="1200" xmlns="http://www.w3.org/2000/svg">
 
                 <!-- Wood -->
@@ -37,12 +36,14 @@
                 </g>
             </svg>
         </div>
+        <input ng-model="fretboard.newChord.name"></input>
+        <button ng-click="fretboard.generateChord()">Generate Chord</button>
 
         <div class="recent-chords">
             <h1>Recent chords</h1>
-            <chord name="A_sus" positions="X02230" fingers="--113-" size="4" ></chord>
-            <chord name="C" positions="X32010" fingers="-32-1-" size="4" ></chord>
-            <chord name="A" positions="577655" fingers="134211" size="4" ></chord>
+            <div ng-repeat="chord in fretboard.chords">
+                <chord  name="{{chord.name}}" positions="{{chord.positions}}" fingers="-----" size="4" ></chord>
+            </div>
         </div>
 
     </body>

@@ -12,10 +12,33 @@
     this.doubleMarkers = calculateDoubleMarkers(this.fretboardHeight, this.frets);
 
     this.notes = calculateNotes(this.strings, this.frets);
+    this.newChord = {name: "", positions: ""};
+    this.chords = [];
 
     this.toggleNote = function(string, fret){
       note = this.notes[string][fret];
       note.selected = ! note.selected;
+    }
+
+    this.generateChord = function(){
+      var positions = [undefined, undefined, undefined, undefined, undefined, undefined];
+
+      for(var i = 0; i < this.notes.length ; i+=1) {
+        for(var j = 0; j < this.notes[i].length ; j+=1) {
+          if (this.notes[i][j].selected ) {
+            positions[i] = j;
+          }
+        }
+      }
+      for(var i = positions.length - 1; i >= 0 ; i-=1) {
+        if (typeof positions[i] === 'undefined'){
+          this.newChord.positions = this.newChord.positions.concat("X");
+        } else {
+          this.newChord.positions = this.newChord.positions.concat(positions[i]);
+        }
+      }
+      this.chords.push(this.newChord);
+      this.newChord = {name: "", positions: ""};
     }
 
     function calculateStrings(fretboardHeight){
@@ -91,8 +114,6 @@
     }
 
   }
-
-
 
   function chord(){
     return {
