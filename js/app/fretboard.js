@@ -41,7 +41,7 @@
           this.newChord.positions = this.newChord.positions.concat(positions[i]);
         }
       }
-      this.chords.push(this.newChord);
+      this.chords.unshift(this.newChord);
       this.clearFretboard();
     }
 
