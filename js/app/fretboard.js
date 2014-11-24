@@ -12,7 +12,7 @@
     this.doubleMarkers = calculateDoubleMarkers(this.fretboardHeight, this.frets);
 
     this.notes = calculateNotes(this.strings, this.frets);
-    this.newChord = {name: "", positions: ""};
+    this.newChord = {name: "", positions: "", notes: [] };
     this.chords = [];
 
     this.toggleNote = function(string, fret){
@@ -37,6 +37,7 @@
         for(var j = 0; j < this.notes[i].length ; j+=1) {
           if (this.notes[i][j].selected ) {
             positions[i] = j;
+            this.newChord.notes.push(this.notes[i][j]);
           }
         }
       }
