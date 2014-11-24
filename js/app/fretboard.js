@@ -12,32 +12,25 @@
     this.doubleMarkers = calculateDoubleMarkers(this.fretboardHeight, this.frets);
 
     this.notes = calculateNotes(this.strings, this.frets);
-    this.newChord = {name: "", positions: "", notes: [] };
+    this.newChord = {name: "", positions: "", notes: angular.copy(this.notes) };
     this.chords = [];
 
     this.toggleNote = function(string, fret){
-      note = this.notes[string][fret];
+      note = this.newChord.notes[string][fret];
       note.selected = ! note.selected;
     }
 
     this.clearFretboard = function(){
-      for(var i = 0; i < this.notes.length ; i+=1) {
-        for(var j = 0; j < this.notes[i].length ; j+=1) {
-          if (this.notes[i][j].selected ) {
-            this.notes[i][j].selected = false;
-          }
-        }
-      }
+      this.newChord = {name: "", positions: "", notes: angular.copy(this.notes) };
     }
 
     this.generateChord = function(){
       var positions = [undefined, undefined, undefined, undefined, undefined, undefined];
 
-      for(var i = 0; i < this.notes.length ; i+=1) {
-        for(var j = 0; j < this.notes[i].length ; j+=1) {
-          if (this.notes[i][j].selected ) {
+      for(var i = 0; i < this.newChord.notes.length ; i+=1) {
+        for(var j = 0; j < this.newChord.notes[i].length ; j+=1) {
+          if (this.newChord.notes[i][j].selected ) {
             positions[i] = j;
-            this.newChord.notes.push(this.notes[i][j]);
           }
         }
       }
@@ -50,7 +43,16 @@
       }
       this.chords.push(this.newChord);
       this.clearFretboard();
-      this.newChord = {name: "", positions: ""};
+    }
+
+    this.editChord = function(index){
+      this.newChord = angular.copy(this.chords[index]);
+      this.newChord.positions = "";
+      this.chords.splice(index,1);
+    }
+
+    this.removeChord = function(index){
+      this.chords.splice(index,1);
     }
 
     function calculateStrings(fretboardHeight){

@@ -31,7 +31,7 @@
                 <path class="string"  ng-repeat="string in fretboard.strings" d="M 0, {{string.yPosition}} L {{fretboard.woodLength}} , {{string.yPosition}} "></path>
 
                 <!-- Notes -->
-                <g ng-repeat="string in fretboard.notes">
+                <g ng-repeat="string in fretboard.newChord.notes">
                     <circle ng-click="fretboard.toggleNote($parent.$index, $index)" ng-class="{selected : note.selected}" ng-repeat="note in string"  class="note" cx="{{note.xPosition}}" cy="{{note.yPosition}}" r="13"></circle>
                 </g>
             </svg>
@@ -42,7 +42,11 @@
 
         <div class="recent-chords">
             <h1>Recent chords</h1>
-            <chord ng-repeat="chord in fretboard.chords" name="{{chord.name}}" positions="{{chord.positions}}" fingers="-----" size="3" ></chord>
+            <div ng-repeat="chord in fretboard.chords" >
+                <chord name="{{chord.name}}" positions="{{chord.positions}}" fingers="-----" size="3" ></chord>
+                <a ng-click="fretboard.editChord($index)">Edit</a>
+                <a ng-click="fretboard.removeChord($index)">Remove</a>
+            </div>
         </div>
 
     </body>
