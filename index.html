@@ -38,12 +38,11 @@
         </div>
         <input ng-model="fretboard.newChord.name"></input>
         <button ng-click="fretboard.generateChord()">Generate Chord</button>
+        <button ng-click="fretboard.clearFretboard()">Clear Fretboard</button>
 
         <div class="recent-chords">
             <h1>Recent chords</h1>
-            <div ng-repeat="chord in fretboard.chords">
-                <chord  name="{{chord.name}}" positions="{{chord.positions}}" fingers="-----" size="4" ></chord>
-            </div>
+            <chord ng-repeat="chord in fretboard.chords" name="{{chord.name}}" positions="{{chord.positions}}" fingers="-----" size="3" ></chord>
         </div>
 
     </body>

@@ -20,6 +20,16 @@
       note.selected = ! note.selected;
     }
 
+    this.clearFretboard = function(){
+      for(var i = 0; i < this.notes.length ; i+=1) {
+        for(var j = 0; j < this.notes[i].length ; j+=1) {
+          if (this.notes[i][j].selected ) {
+            this.notes[i][j].selected = false;
+          }
+        }
+      }
+    }
+
     this.generateChord = function(){
       var positions = [undefined, undefined, undefined, undefined, undefined, undefined];
 
@@ -38,6 +48,7 @@
         }
       }
       this.chords.push(this.newChord);
+      this.clearFretboard();
       this.newChord = {name: "", positions: ""};
     }
 
