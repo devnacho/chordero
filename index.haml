@@ -33,7 +33,7 @@
         %g{"ng-repeat" => "string in fretboard.newChord.notes"}
           %circle.note{:cx => "{{note.xPosition}}", :cy => "{{note.yPosition}}", "ng-class" => "{selected : note.selected}", "ng-click" => "fretboard.toggleNote($parent.$index, $index)", "ng-repeat" => "note in string", :r => "13"}
 
-    %input{"ng-model" => "fretboard.newChord.name"}
+    %input{type: "text", "ng-model" => "fretboard.newChord.name"}
     %button{"ng-click" => "fretboard.generateChord()"} Generate Chord
     %button{"ng-click" => "fretboard.clearFretboard()"} Clear Fretboard
     .recent-chords
