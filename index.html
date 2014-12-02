@@ -41,7 +41,7 @@
             <circle class='marker' cx='{{marker.xPosition}}' cy='{{marker.yPosition2}}' r='{{marker.radius}}'></circle>
           </g>
           <!-- Strings -->
-          <path class='string' d='M 0, {{string.yPosition}} L {{fretboard.woodLength}} , {{string.yPosition}} ' ng-repeat='string in fretboard.strings'></path>
+          <path class='string' d='M 0, {{string.yPosition}} L {{fretboard.woodLength}} , {{string.yPosition}}' ng-repeat='string in fretboard.strings' style='stroke-width:{{1+ $index * 0.4 }};'></path>
           <!-- Notes -->
           <g ng-repeat='string in fretboard.newChord.notes'>
             <circle class='note' cx='{{note.xPosition}}' cy='{{note.yPosition}}' ng-class='{selected : note.selected}' ng-click='fretboard.toggleNote($parent.$index, $index)' ng-repeat='note in string' r='13'></circle>

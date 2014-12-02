@@ -38,7 +38,7 @@
             %circle.marker{:cx => "{{marker.xPosition}}", :cy => "{{marker.yPosition2}}", :r => "{{marker.radius}}"}
 
           / Strings
-          %path.string{"ng-repeat" => "string in fretboard.strings", :d => "M 0, {{string.yPosition}} L {{fretboard.woodLength}} , {{string.yPosition}} "}
+          %path.string{"ng-repeat" => "string in fretboard.strings", :d => "M 0, {{string.yPosition}} L {{fretboard.woodLength}} , {{string.yPosition}}", style: "stroke-width:{{1+ $index * 0.4 }};"}
 
           / Notes
           %g{"ng-repeat" => "string in fretboard.newChord.notes"}
