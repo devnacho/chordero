@@ -143,7 +143,7 @@ var chords = (function(){
             _lineWidth = Math.ceil(_size * 0.31);
             _dotWidth = Math.ceil(0.9 * _fretWidth);
             _markerWidth = 0.7 * _fretWidth;
-            _boxWidth = 5 * _fretWidth + 6 * _lineWidth;
+            _boxWidth =     5 * _fretWidth + 6 * _lineWidth;
             _boxHeight = FRET_COUNT * (_fretWidth + _lineWidth) + _lineWidth;
 
             //Find out font sizes
@@ -165,7 +165,7 @@ var chords = (function(){
             _xstart = _fretWidth;
             _ystart = Math.round(0.2 * _superScriptFontSize + _nameFontSize + _nutHeight + 1.7 * _markerWidth);
 
-            _imageWidth = (_boxWidth + 5 * _fretWidth);
+            _imageWidth = (_boxWidth + 2 * _fretWidth);
             _imageHeight = (_boxHeight + _ystart + _fretWidth + _fretWidth);
 
             _signWidth = (_fretWidth * 0.75);
