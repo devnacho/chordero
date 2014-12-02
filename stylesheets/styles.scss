@@ -3,17 +3,75 @@
 @import "base/base";
 
 body{
-  background: rgb(72, 224, 237);
+  @include linear-gradient( 90deg, #A100FF 10%, #713BBE 90%);
   text-align: center;
   margin:0;
   font-family: 'Helvetica', 'Arial', sans-serif;
 }
 svg{
   overflow: visible;
-  margin-bottom: 50px;
 }
+
+button{
+  background: none;
+  border-radius: 0;
+  border: 2px solid;
+}
+
+header{
+  @include outer-container;
+  nav{
+    text-align: right;
+    a{
+      font-size: 30px;
+      color:white;
+      &:hover{
+        color:#E5D0FF;
+      }
+    }
+  }
+}
+
+.fretboard{
+  .chord-name{
+    @include outer-container;
+    input{
+      width: 480px;
+      margin: 0px auto 30px auto;
+      background: none;
+      color: #FFF;
+      font-size: 35px;
+      border: none;
+      border-radius: 0;
+      border-bottom: 2px solid #9F7EFF;
+      box-shadow: none;
+      text-align: center;
+      @include placeholder {
+        color: #9F7EFF;
+      }
+      &:focus{
+        border-bottom: 2px solid #fff;
+      }
+    }
+  }
+}
+.generate{
+  @include outer-container;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  button#generate-chord{
+    font-size: 18px;
+    padding: 18px 40px;
+    border:3px solid white;
+    &:hover{
+      background: white;
+      color:#A100FF;
+    }
+  }
+}
+
 #logo{
-  margin: 100px auto;
+  margin: 10px auto;
 }
 #canvas_container {
   width:1200px;
@@ -63,5 +121,5 @@ svg{
   background: white;
   padding:40px 0;
   margin:0;
-  border-top:4px solid #1B696F;
+  border-top:4px solid #43146F;
 }

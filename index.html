@@ -3,38 +3,57 @@
   <head>
     <title>Fretboard Chords</title>
     <link href='stylesheets/styles.css' rel='stylesheet' type='text/css'>
+    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet'>
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js'></script>
     <script src='js/angular.min.js' type='text/javascript'></script>
     <script src='js/chords.js'></script>
     <script src='js/app/fretboard.js' type='text/javascript'></script>
   </head>
   <body ng-controller='FretboardCtrl as fretboard'>
-    <img height='134' id='logo' src='images/logo.png' width='815'>
-    <div id='canvas_container'>
-      <svg height='200' version='1.1' width='1200' xmlns='http://www.w3.org/2000/svg'>
-        <!-- Wood -->
-        <rect height='{{fretboard.fretboardHeight}}' id='wood' r='0' rx='0' ry='0' width='{{fretboard.woodLength}}' x='0' y='0'></rect>
-        <!-- Frets -->
-        <path class='fret' d='M {{fret.xPosition}} , 0 L {{fret.xPosition}} , {{fretboard.fretboardHeight}} ' ng-class='{nut: $first}' ng-repeat='fret in fretboard.frets'></path>
-        <!-- Simple Markers -->
-        <circle class='marker' cx='{{marker.xPosition}}' cy='{{marker.yPosition}}' ng-repeat='marker in fretboard.simpleMarkers' r='{{marker.radius}}'></circle>
-        <!-- Double Markers -->
-        <g ng-repeat='marker in fretboard.doubleMarkers'>
-          <circle class='marker' cx='{{marker.xPosition}}' cy='{{marker.yPosition1}}' r='{{marker.radius}}'></circle>
-          <circle class='marker' cx='{{marker.xPosition}}' cy='{{marker.yPosition2}}' r='{{marker.radius}}'></circle>
-        </g>
-        <!-- Strings -->
-        <path class='string' d='M 0, {{string.yPosition}} L {{fretboard.woodLength}} , {{string.yPosition}} ' ng-repeat='string in fretboard.strings'></path>
-        <!-- Notes -->
-        <g ng-repeat='string in fretboard.newChord.notes'>
-          <circle class='note' cx='{{note.xPosition}}' cy='{{note.yPosition}}' ng-class='{selected : note.selected}' ng-click='fretboard.toggleNote($parent.$index, $index)' ng-repeat='note in string' r='13'></circle>
-        </g>
-      </svg>
-    </div>
-    <input ng-model='fretboard.newChord.name' type='text'>
-    <button ng-click='fretboard.generateChord()'>Generate Chord</button>
-    <button ng-click='fretboard.clearFretboard()'>Clear Fretboard</button>
-    <div class='recent-chords'>
+    <header>
+      <nav>
+        <a href='http://github.com/jgnatch' target='_blank'>
+          <i class='fa fa-github'></i>
+        </a>
+        <a href='http://twitter.com/jgnatch' target='_blank'>
+          <i class='fa fa-twitter'></i>
+        </a>
+      </nav>
+      <div class='logo'>
+        <img height='134' id='logo' src='images/logo.png' width='815'>
+      </div>
+    </header>
+    <section class='fretboard'>
+      <div class='chord-name'>
+        <input ng-model='fretboard.newChord.name' placeholder='Enter chord name here' type='text'>
+      </div>
+      <div id='canvas_container'>
+        <svg height='200' version='1.1' width='1200' xmlns='http://www.w3.org/2000/svg'>
+          <!-- Wood -->
+          <rect height='{{fretboard.fretboardHeight}}' id='wood' r='0' rx='0' ry='0' width='{{fretboard.woodLength}}' x='0' y='0'></rect>
+          <!-- Frets -->
+          <path class='fret' d='M {{fret.xPosition}} , 0 L {{fret.xPosition}} , {{fretboard.fretboardHeight}} ' ng-class='{nut: $first}' ng-repeat='fret in fretboard.frets'></path>
+          <!-- Simple Markers -->
+          <circle class='marker' cx='{{marker.xPosition}}' cy='{{marker.yPosition}}' ng-repeat='marker in fretboard.simpleMarkers' r='{{marker.radius}}'></circle>
+          <!-- Double Markers -->
+          <g ng-repeat='marker in fretboard.doubleMarkers'>
+            <circle class='marker' cx='{{marker.xPosition}}' cy='{{marker.yPosition1}}' r='{{marker.radius}}'></circle>
+            <circle class='marker' cx='{{marker.xPosition}}' cy='{{marker.yPosition2}}' r='{{marker.radius}}'></circle>
+          </g>
+          <!-- Strings -->
+          <path class='string' d='M 0, {{string.yPosition}} L {{fretboard.woodLength}} , {{string.yPosition}} ' ng-repeat='string in fretboard.strings'></path>
+          <!-- Notes -->
+          <g ng-repeat='string in fretboard.newChord.notes'>
+            <circle class='note' cx='{{note.xPosition}}' cy='{{note.yPosition}}' ng-class='{selected : note.selected}' ng-click='fretboard.toggleNote($parent.$index, $index)' ng-repeat='note in string' r='13'></circle>
+          </g>
+        </svg>
+      </div>
+    </section>
+    <section class='generate'>
+      <button id='generate-chord' ng-click='fretboard.generateChord()'>Generate Chord</button>
+      <!-- /%button{"ng-click" => "fretboard.clearFretboard()"} Clear Fretboard -->
+    </section>
+    <div class='recent-chords' ng-show='fretboard.chords.length &gt; 0'>
       <h1>Recent chords</h1>
       <div ng-repeat='chord in fretboard.chords'>
         <chord fingers='-----' name='{{chord.name}}' positions='{{chord.positions}}' size='3'></chord>
