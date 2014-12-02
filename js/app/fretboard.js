@@ -3,7 +3,7 @@
 
   function FretboardCtrl(){
     this.scaleLength = 1630;
-    this.fretboardHeight = 180;
+    this.fretboardHeight = 170;
     this.woodLength = 1200;
 
     this.strings = calculateStrings(this.fretboardHeight);
@@ -147,6 +147,7 @@
         }
     }
   }
+
 
   app.controller('FretboardCtrl', [FretboardCtrl] );
   app.directive('chord', [chord] );

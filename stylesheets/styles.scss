@@ -38,10 +38,11 @@ header{
 }
 
 .fretboard{
+  margin-bottom: 20px;
   .chord-name{
     @include outer-container;
     input{
-      width: 480px;
+      width: 400px;
       margin: 0px auto 30px auto;
       background: none;
       color: #FFF;
@@ -51,6 +52,8 @@ header{
       border-bottom: 2px solid #9F7EFF;
       box-shadow: none;
       text-align: center;
+      display: inline;
+      margin-right: 25px;
       @include placeholder {
         color: #9F7EFF;
       }
@@ -58,20 +61,16 @@ header{
         border-bottom: 2px solid #fff;
       }
     }
-  }
-}
-.generate{
-  @include outer-container;
-  margin-top: 30px;
-  margin-bottom: 50px;
-  button#generate-chord{
-    font-size: 18px;
-    padding: 18px 40px;
-    border:3px solid white;
-    color:white;
-    &:hover{
-      background: white;
-      color:#A100FF;
+    button#generate-chord{
+      display: inline;
+      font-size: 18px;
+      padding: 18px 40px;
+      border:3px solid white;
+      color:white;
+      &:hover{
+        background: white;
+        color:#A100FF;
+      }
     }
   }
 }
@@ -81,7 +80,7 @@ header{
 }
 #canvas_container {
   width:1200px;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 #wood{

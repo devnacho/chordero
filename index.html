@@ -20,12 +20,13 @@
         </a>
       </nav>
       <div class='logo'>
-        <img height='134' id='logo' src='images/logo.png' width='815'>
+        <img height='112' id='logo' src='images/logo.png' width='680'>
       </div>
     </header>
     <section class='fretboard'>
       <div class='chord-name'>
         <input ng-model='fretboard.newChord.name' placeholder='Enter chord name here' type='text'>
+        <button id='generate-chord' ng-click='fretboard.generateChord()'>Generate Chord</button>
       </div>
       <div id='canvas_container'>
         <svg height='200' version='1.1' width='1200' xmlns='http://www.w3.org/2000/svg'>
@@ -48,13 +49,9 @@
           </g>
         </svg>
       </div>
-    </section>
-    <section class='generate'>
-      <button id='generate-chord' ng-click='fretboard.generateChord()'>Generate Chord</button>
       <!-- /%button{"ng-click" => "fretboard.clearFretboard()"} Clear Fretboard -->
     </section>
     <div class='recent-chords' ng-show='fretboard.chords.length &gt; 0'>
-      <h1>Recent chords</h1>
       <div class='chords'>
         <div class='chord' ng-repeat='chord in fretboard.chords'>
           <chord fingers='-----' name='{{chord.name}}' positions='{{chord.positions}}' size='3'></chord>
