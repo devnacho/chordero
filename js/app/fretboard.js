@@ -1,8 +1,6 @@
 (function(){
   var app = angular.module('fretboard', ['ngAnimate', 'ngStorage']);
 
-  //app.controller('FretboardCtrl', [FretboardCtrl] );
-
   app.controller('FretboardCtrl', ['$localStorage', function($localStorage) {
     this.scaleLength = 1630;
     this.fretboardHeight = 170;
