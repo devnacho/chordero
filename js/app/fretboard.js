@@ -1,5 +1,5 @@
 (function(){
-  var app = angular.module('fretboard', ['ngAnimate']);
+  var app = angular.module('fretboard', ['ngAnimate', 'ngStorage']);
 
   function FretboardCtrl(){
     this.scaleLength = 1630;
