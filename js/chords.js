@@ -165,7 +165,7 @@ var chords = (function(){
             _xstart = _fretWidth;
             _ystart = Math.round(0.2 * _superScriptFontSize + _nameFontSize + _nutHeight + 1.7 * _markerWidth);
 
-            _imageWidth = (_boxWidth + 2 * _fretWidth);
+            _imageWidth = (_boxWidth + 5 * _fretWidth);
             _imageHeight = (_boxHeight + _ystart + _fretWidth + _fretWidth);
 
             _signWidth = (_fretWidth * 0.75);

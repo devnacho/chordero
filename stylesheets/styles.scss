@@ -145,8 +145,14 @@ header{
           font-size: 13px;
         }
       }
+      &.ng-enter {
+        @include animation(fadeInLeft 0.5s);
+      }
+
+      &.ng-leave {
+        @include animation(fadeOut 0.2s);
+      }
     }
-
   }
-
 }
+
