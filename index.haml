@@ -51,9 +51,9 @@
             %circle.note{:cx => "{{note.xPosition}}", :cy => "{{note.yPosition}}", "ng-class" => "{selected : note.selected}", "ng-click" => "fretboard.toggleNote($parent.$index, $index)", "ng-repeat" => "note in string", :r => "13"}
 
       //%button{"ng-click" => "fretboard.clearFretboard()"} Clear Fretboard
-    .recent-chords{"ng-show" => "fretboard.chords.length > 0"}
+    .recent-chords{"ng-show" => "fretboard.$storage.chords.length > 0"}
       .chords
-        .chord{"ng-repeat" => "chord in fretboard.chords"}
+        .chord{"ng-repeat" => "chord in fretboard.$storage.chords"}
           %chord{:fingers => "-----", :name => "{{chord.name}}", :positions => "{{chord.positions}}", :size => "3"}
           .actions
             %ul

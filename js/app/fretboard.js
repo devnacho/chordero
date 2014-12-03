@@ -1,7 +1,9 @@
 (function(){
   var app = angular.module('fretboard', ['ngAnimate', 'ngStorage']);
 
-  function FretboardCtrl(){
+  //app.controller('FretboardCtrl', [FretboardCtrl] );
+
+  app.controller('FretboardCtrl', ['$localStorage', function($localStorage) {
     this.scaleLength = 1630;
     this.fretboardHeight = 170;
     this.woodLength = 1200;
@@ -13,7 +15,10 @@
 
     this.notes = calculateNotes(this.strings, this.frets);
     this.newChord = {name: "", positions: "", notes: angular.copy(this.notes) };
-    this.chords = [];
+
+    this.$storage = $localStorage.$default({
+      chords: []
+    });
 
     this.toggleNote = function(string, fret){
       note = this.newChord.notes[string][fret];
@@ -41,18 +46,18 @@
           this.newChord.positions = this.newChord.positions.concat(positions[i]);
         }
       }
-      this.chords.unshift(this.newChord);
+      this.$storage.chords.unshift(this.newChord);
       this.clearFretboard();
     }
 
     this.editChord = function(index){
-      this.newChord = angular.copy(this.chords[index]);
+      this.newChord = angular.copy(this.$storage.chords[index]);
       this.newChord.positions = "";
-      this.chords.splice(index,1);
+      this.$storage.chords.splice(index,1);
     }
 
     this.removeChord = function(index){
-      this.chords.splice(index,1);
+      this.$storage.chords.splice(index,1);
     }
 
     function calculateStrings(fretboardHeight){
@@ -127,7 +132,8 @@
       return notes;
     }
 
-  }
+  }]);
+
 
   function chord(){
     return {
@@ -149,7 +155,6 @@
   }
 
 
-  app.controller('FretboardCtrl', [FretboardCtrl] );
   app.directive('chord', [chord] );
 
 
