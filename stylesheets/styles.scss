@@ -2,6 +2,10 @@
 @import "neat/neat";
 @import "base/base";
 
+html, body{
+  height: 100%;
+}
+
 body{
   @include linear-gradient( 90deg, #A100FF 10%, #713BBE 90%);
   text-align: center;
@@ -121,13 +125,12 @@ header{
 
 }
 
-
 .recent-chords{
   background: white;
   padding:40px 0;
   margin:0;
   border-top:4px solid #43146F;
-
+  height: 100%;
   .chords{
     @include outer-container;
     .chord{
@@ -171,7 +174,7 @@ header{
       }
 
       &:hover{
-        border-bottom:4px solid #CCC;
+        border-bottom:4px solid #eaeaea;
         .actions{
           a{
             visibility: visible;
