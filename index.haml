@@ -1,0 +1,66 @@
+!!!
+%html{"ng-app" => "fretboard", "ng-cloak" => ""}
+  %head
+    %title Fretboard Chords
+    %link{:href => "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+    %link{:href => "http://cdnjs.cloudflare.com/ajax/libs/animate.css/2.0/animate.min.css", :rel => "stylesheet"}/
+    %link{:href => "stylesheets/styles.css", :rel => "stylesheet", :type => "text/css"}/
+
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"}
+    %script{:src => "js/angular.min.js", :type => "text/javascript"}
+    %script{:src => "js/angular-animate.min.js", :type => "text/javascript"}
+    %script{:src => "js/ngStorage.min.js", :type => "text/javascript"}
+    %script{:src => "js/chords.js"}
+    %script{:src => "js/app/fretboard.js", :type => "text/javascript"}
+
+  %body{"ng-controller" => "FretboardCtrl as fretboard"}
+    %header
+      %nav
+        %a{href: "http://github.com/jgnatch", target: "_blank"}
+          %i.fa.fa-github
+        %a{href: "http://twitter.com/jgnatch", target: "_blank"}
+          %i.fa.fa-twitter
+      .logo
+        %img#logo{:height => "112", :src => "images/logo.png", :width => "680"}/
+    %section.fretboard
+      .chord-name
+        %input{type: "text", "ng-model" => "fretboard.newChord.name", placeholder: "Enter chord name here"}
+        %button#generate-chord{"ng-click" => "fretboard.generateChord()"} Generate Chord
+      #canvas_container
+        %svg{:height => "200", :version => "1.1", :width => "1200", :xmlns => "http://www.w3.org/2000/svg"}
+
+          / Wood
+          %rect#wood{:width => "{{fretboard.woodLength}}", :height => "{{fretboard.fretboardHeight}}", :r => "0", :rx => "0", :ry => "0", :x => "0", :y => "0"}
+
+          / Frets
+          %path.fret{ "ng-class" => "{nut: $first}", "ng-repeat" => "fret in fretboard.frets", :d => "M {{fret.xPosition}} , 0 L {{fret.xPosition}} , {{fretboard.fretboardHeight}} "}
+
+          / Simple Markers
+          %circle.marker{:cx => "{{marker.xPosition}}", :cy => "{{marker.yPosition}}", "ng-repeat" => "marker in fretboard.simpleMarkers", :r => "{{marker.radius}}"}
+
+          / Double Markers
+          %g{"ng-repeat" => "marker in fretboard.doubleMarkers"}
+            %circle.marker{:cx => "{{marker.xPosition}}", :cy => "{{marker.yPosition1}}", :r => "{{marker.radius}}"}
+            %circle.marker{:cx => "{{marker.xPosition}}", :cy => "{{marker.yPosition2}}", :r => "{{marker.radius}}"}
+
+          / Strings
+          %path.string{"ng-repeat" => "string in fretboard.strings", :d => "M 0, {{string.yPosition}} L {{fretboard.woodLength}} , {{string.yPosition}}", style: "stroke-width:{{1+ $index * 0.4 }};"}
+
+          / Notes
+          %g{"ng-repeat" => "string in fretboard.newChord.notes"}
+            %circle.note{:cx => "{{note.xPosition}}", :cy => "{{note.yPosition}}", "ng-class" => "{selected : note.selected}", "ng-click" => "fretboard.toggleNote($parent.$index, $index)", "ng-repeat" => "note in string", :r => "13"}
+
+      //%button{"ng-click" => "fretboard.clearFretboard()"} Clear Fretboard
+    .recent-chords{"ng-show" => "fretboard.$storage.chords.length > 0"}
+      .chords
+        .chord{"ng-repeat" => "chord in fretboard.$storage.chords"}
+          .actions
+            %ul
+              %li
+                %a.edit{"ng-click" => "fretboard.editChord($index)"}
+                  %i.fa.fa-edit
+              %li
+                %a.remove{"ng-click" => "fretboard.removeChord($index)"}
+                  %i.fa.fa-times
+          .image
+            %chord{:fingers => "-----", :name => "{{chord.name}}", :positions => "{{chord.positions}}", :size => "3"}
