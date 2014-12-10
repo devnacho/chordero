@@ -57,22 +57,22 @@
     <div class='recent-chords' ng-show='fretboard.$storage.chords.length &gt; 0'>
       <div class='chords'>
         <div class='chord' ng-repeat='chord in fretboard.$storage.chords'>
-          <chord fingers='-----' name='{{chord.name}}' positions='{{chord.positions}}' size='3'></chord>
           <div class='actions'>
             <ul>
               <li>
-                <a ng-click='fretboard.editChord($index)'>
+                <a class='edit' ng-click='fretboard.editChord($index)'>
                   <i class='fa fa-edit'></i>
-                  Edit
                 </a>
               </li>
               <li>
-                <a ng-click='fretboard.removeChord($index)'>
-                  <i class='fa fa-edit'></i>
-                  Remove
+                <a class='remove' ng-click='fretboard.removeChord($index)'>
+                  <i class='fa fa-times'></i>
                 </a>
               </li>
             </ul>
+          </div>
+          <div class='image'>
+            <chord fingers='-----' name='{{chord.name}}' positions='{{chord.positions}}' size='3'></chord>
           </div>
         </div>
       </div>
