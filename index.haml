@@ -27,28 +27,29 @@
         %input{type: "text", "ng-model" => "fretboard.newChord.name", placeholder: "Enter chord name here"}
         %button#generate-chord{"ng-click" => "fretboard.generateChord()"} Generate Chord
       #canvas_container
-        %svg{:height => "200", :version => "1.1", :width => "1200", :xmlns => "http://www.w3.org/2000/svg"}
+        %svg{:height => "250", :version => "1.1", :width => "1300", :xmlns => "http://www.w3.org/2000/svg"}
+          %svg{:x => "40", :y => "30"}
 
-          / Wood
-          %rect#wood{:width => "{{fretboard.woodLength}}", :height => "{{fretboard.fretboardHeight}}", :r => "0", :rx => "0", :ry => "0", :x => "0", :y => "0"}
+            / Wood
+            %rect#wood{:width => "{{fretboard.woodLength}}", :height => "{{fretboard.fretboardHeight}}", :r => "0", :rx => "0", :ry => "0", :x => "0", :y => "0"}
 
-          / Frets
-          %path.fret{ "ng-class" => "{nut: $first}", "ng-repeat" => "fret in fretboard.frets", :d => "M {{fret.xPosition}} , 0 L {{fret.xPosition}} , {{fretboard.fretboardHeight}} "}
+            / Frets
+            %path.fret{ "ng-class" => "{nut: $first}", "ng-repeat" => "fret in fretboard.frets", :d => "M {{fret.xPosition}} , 0 L {{fret.xPosition}} , {{fretboard.fretboardHeight}} "}
 
-          / Simple Markers
-          %circle.marker{:cx => "{{marker.xPosition}}", :cy => "{{marker.yPosition}}", "ng-repeat" => "marker in fretboard.simpleMarkers", :r => "{{marker.radius}}"}
+            / Simple Markers
+            %circle.marker{:cx => "{{marker.xPosition}}", :cy => "{{marker.yPosition}}", "ng-repeat" => "marker in fretboard.simpleMarkers", :r => "{{marker.radius}}"}
 
-          / Double Markers
-          %g{"ng-repeat" => "marker in fretboard.doubleMarkers"}
-            %circle.marker{:cx => "{{marker.xPosition}}", :cy => "{{marker.yPosition1}}", :r => "{{marker.radius}}"}
-            %circle.marker{:cx => "{{marker.xPosition}}", :cy => "{{marker.yPosition2}}", :r => "{{marker.radius}}"}
+            / Double Markers
+            %g{"ng-repeat" => "marker in fretboard.doubleMarkers"}
+              %circle.marker{:cx => "{{marker.xPosition}}", :cy => "{{marker.yPosition1}}", :r => "{{marker.radius}}"}
+              %circle.marker{:cx => "{{marker.xPosition}}", :cy => "{{marker.yPosition2}}", :r => "{{marker.radius}}"}
 
-          / Strings
-          %path.string{"ng-repeat" => "string in fretboard.strings", :d => "M 0, {{string.yPosition}} L {{fretboard.woodLength}} , {{string.yPosition}}", style: "stroke-width:{{1+ $index * 0.4 }};"}
+            / Strings
+            %path.string{"ng-repeat" => "string in fretboard.strings", :d => "M 0, {{string.yPosition}} L {{fretboard.woodLength}} , {{string.yPosition}}", style: "stroke-width:{{1+ $index * 0.4 }};"}
 
-          / Notes
-          %g{"ng-repeat" => "string in fretboard.newChord.notes"}
-            %circle.note{:cx => "{{note.xPosition}}", :cy => "{{note.yPosition}}", "ng-class" => "{selected : note.selected}", "ng-click" => "fretboard.toggleNote($parent.$index, $index)", "ng-repeat" => "note in string", :r => "13"}
+            / Notes
+            %g{"ng-repeat" => "string in fretboard.newChord.notes"}
+              %circle.note{:cx => "{{note.xPosition}}", :cy => "{{note.yPosition}}", "ng-class" => "{selected : note.selected}", "ng-click" => "fretboard.toggleNote($parent.$index, $index)", "ng-repeat" => "note in string", :r => "13"}
 
       //%button{"ng-click" => "fretboard.clearFretboard()"} Clear Fretboard
     .recent-chords{"ng-show" => "fretboard.$storage.chords.length > 0"}
